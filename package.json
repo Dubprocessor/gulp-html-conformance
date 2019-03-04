@@ -1,0 +1,120 @@
+{
+  "name": "gulp-html-conformance",
+  "version": "0.0.0-semantic-release",
+  "description": "gulp plugin for checking out whether html files conform to the HTML spec (v.Nu checker) or your formatting preferences (htmlhint)",
+  "main": "./src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dubprocessor/gulp-html-conformance.git"
+  },
+  "keywords": [
+    "gulp",
+    "html",
+    "htmllint",
+    "htmlhint",
+    "W3C",
+    "v.Nu"
+  ],
+  "author": "Dubprocessor",
+  "license": "MIT",
+  "homepage": "https://github.com/Dubprocessor/gulp-html-conformance",
+  "scripts": {
+    "test": "jest --testPathIgnorePatterns end2end.test.js --collect-coverage",
+    "posttest": "jest-coverage-badges --output './assets/badges'",
+    "test:end2end": "jest end2end.test.js",
+    "htmllint": "gulp htmllint",
+    "lint": "eslint --fix 'src/**/*.js' && prettier --write 'src/**/*.js'",
+    "updtr": "updtr --use npm --save exact --reporter basic",
+    "cm": "git-cz",
+    "semantic-release": "semantic-release"
+  },
+  "engines": {
+    "node": ">=8.2"
+  },
+  "dependencies": {
+    "chalk": "2.4.2",
+    "htmlhint": "0.11.0",
+    "plugin-error": "1.0.1",
+    "through2": "3.0.1",
+    "vnu-jar": "18.11.5",
+    "winston": "3.2.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "7.5.2",
+    "@commitlint/config-conventional": "7.5.0",
+    "commitizen": "3.0.7",
+    "cz-conventional-changelog": "2.1.0",
+    "eslint": "5.15.1",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "2.16.0",
+    "gulp": "4.0.0",
+    "husky": "1.3.1",
+    "jest": "24.3.1",
+    "jest-coverage-badges": "1.1.2",
+    "lint-staged": "8.1.5",
+    "prettier": "1.16.4",
+    "semantic-release": "^15.13.3",
+    "updtr": "3.1.0",
+    "vinyl": "2.2.0"
+  },
+  "files": [
+    "src"
+  ],
+  "jest": {
+    "testEnvironment": "node",
+    "modulePaths": [
+      "src",
+      "/node_modules/"
+    ],
+    "collectCoverageFrom": [
+      "./src/**/*.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "json-summary"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "endOfLine": "lf"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/*.js": [
+      "eslint --fix",
+      "git add",
+      "jest --bail --findRelatedTests"
+    ],
+    "*.{js,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
+}

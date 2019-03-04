@@ -1,0 +1,53 @@
+const options = {
+  logToFile: '',
+  vnu: {
+    'errors-only': false,
+    'Werror': false,
+    'exit-zero-always': false,
+    'asciiquotes': false,
+    'user-agent': 'Validator.nu/LV',
+    'no-langdetect': false,
+    'no-stream': false,
+    'filterfile': './__test__/fixtures/.filter',
+    'filterpattern': '.*error.*',
+    'css': false,
+    'skip-non-css': false,
+    'also-check-css': false,
+    'svg': false,
+    'skip-non-svg': false,
+    'also-check-svg': false,
+    'html': false,
+    'skip-non-html': false,
+    'format': 'json',
+    'help': false,
+    'verbose': false,
+    'version': false
+  },
+  htmlhint: {
+    "tagname-lowercase": true,
+    "attr-lowercase": true,
+    "attr-value-double-quotes": true,
+    "attr-value-not-empty": false,
+    "attr-no-duplication": true,
+    "doctype-first": true,
+    "tag-pair": true,
+    "tag-self-close": false,
+    "spec-char-escape": true,
+    "id-unique": true,
+    "src-not-empty": true,
+    "title-require": true,
+    "alt-require": true,
+    "doctype-html5": true,
+    "id-class-value": 'dash',
+    "style-disabled": false,
+    "inline-style-disabled": false,
+    "inline-script-disabled": false,
+    "space-tab-mixed-disabled": "space",
+    "id-class-ad-disabled": false,
+    "href-abs-or-rel": false,
+    "attr-unsafe-chars": true,
+    "head-script-disabled": true
+  }
+};
+
+module.exports  = options;
