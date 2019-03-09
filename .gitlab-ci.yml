@@ -1,5 +1,6 @@
 variables:
   DOCKER_DRIVER: overlay2
+  
 image: node:8.3.0-alpine
 
 stages:
@@ -12,7 +13,7 @@ before_script:
 cache:
   paths:
     - node_modules/
-    
+
 updtr:
   stage: test
   script:
