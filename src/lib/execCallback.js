@@ -14,6 +14,6 @@ module.exports = function execCallback(error, stdout, stderr, options, cb, file,
       )
     );
   }
-  console.log(stdout); /*eslint-disable-line*/
+
   return cb(handleMessages(stderr, file.history[0], hinted), file);
 };

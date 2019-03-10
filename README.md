@@ -59,8 +59,8 @@ gulp.task('lintHtml', () =>
 ```
 
 Some comments on "vnu" options:<br/>
-:no_entry_sign: Although you may use "version" or "verbose" option one at a time, do not use both at the same time, this will lead to unpredictable behavior and false positives from v.<span></span>Nu . These options are of little use,it is better not to use them at all.
 
+- The "version" and "verbose" options will always fall back to false. These options are of little use, but cause some problems, so they are disabled. The "verbose" option just prints path to file being checked, anyway this plugin does it by itself.
 - There is no need to set the "format" option for v.<span></span>Nu, this option will always be "json". Other formats for v.<span></span>Nu are not supported, as they are useless for console output but require parsing, formatting, and so on. If for some reason you need those formats, define the "logToFile" option with the path to log file, then you can parse that file to any format you need.
 - The "user-agent" option will always be "Validator<span></span>.nu/LV". Checking HTTPS/HTTP URLs is not supported.
 - To avoid confusion with regular expressions, always use the recommended pattern for "filterpattern" option, like this: '.\*someword.\*'. If you want to filter multiple messages, just define "filterfile" option and then filter out as many messages as you want.

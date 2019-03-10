@@ -41,6 +41,12 @@ function setVnuOptions(opts, options) {
     if (typeof opts.vnu[key] === 'boolean' && nonBooleanKeys.indexOf(key) === -1) {
       assigned.vnu[key] = opts.vnu[key];
     }
+    if (key === 'version') {
+      assigned.vnu.version = false;
+    }
+    if (key === 'verbose') {
+      assigned.vnu.verbose = false;
+    }
     if (key === 'format') {
       assigned.vnu.format = 'json';
     }
