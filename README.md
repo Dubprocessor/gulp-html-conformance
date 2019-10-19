@@ -24,7 +24,7 @@ This plugin supports a lot of options for Nu Checker and HTMLHint, but you can a
 [See options for v.Nu](https://validator.github.io/validator/#options) <br/>
 [See options for HTMLHint](https://github.com/htmlhint/HTMLHint/wiki/Rules) <br/>
 [Default rulesset for HTMLHint](https://github.com/htmlhint/HTMLHint/wiki/Usage#about-rules)<br/>
-:no_entry_sign: Please, do not mix the compilation process with the linting. Any lint tool in such a case needs a final compilation result. The gulp pipes look like they are performed synchronously, but this is not so! [Do not do this..](https://github.com/validator/gulp-html/issues/12) [Do this instead..](https://gulpjs.org/recipes/running-tasks-in-series.html):thumbsup:
+:no_entry_sign: Please, do not mix the compilation process with the linting. Any lint tool in such a case needs a final compilation result. The gulp pipes look like they are performed synchronously, but this is not so! [Do not do this..](https://github.com/validator/gulp-html/issues/12) [Do this instead..](https://gulpjs.com/docs/en/api/series):thumbsup:
 
 #### Examples
 
