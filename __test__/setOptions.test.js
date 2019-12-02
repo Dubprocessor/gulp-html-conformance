@@ -1,14 +1,16 @@
 const opts = require('./fixtures/options');
 const setOptions = require('../src/lib/options/setOptions');
 
-describe('test setOptions function', () => {
+describe('setOptions', () => {
   test('options should be set', () => {
-    const result = setOptions(opts);
-    expect(result).toEqual(opts);
+    const options = setOptions(opts);
+    expect(options).toEqual(opts);
   });
+
   test('it should throw error if there is unknown key', () => {
     const badKey = 'logTofil';
     opts[badKey] = './path/file.log';
+
     try {
       setOptions(opts);
     } catch (error) {

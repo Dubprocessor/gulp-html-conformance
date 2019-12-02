@@ -26,33 +26,30 @@ function setVnuOptions(opts, options) {
     'verbose',
     'version'
   ];
-  const nonBooleanKeys = ['format', 'user-agent', 'filterfile', 'filterpattern'];
+  const nonBooleanKeys = ['filterfile', 'filterpattern'];
+  const defaultKeys = ['format', 'user-agent', 'verbose', 'version'];
 
   Object.keys(opts.vnu).forEach(key => {
     if (allVnuKeys.indexOf(key) === -1) {
       throw new PluginError('gulp-html-conformance', `Unknown key - '${key}' in vnu options`);
     }
+
+    if (defaultKeys.indexOf(key) !== -1) {
+      return;
+    }
+
     if (typeof opts.vnu[key] !== 'boolean' && nonBooleanKeys.indexOf(key) === -1) {
       throw new PluginError(
         'gulp-html-conformance',
         `Bad value in vnu options. Usage - '${key}': boolean`
       );
     }
+
     if (typeof opts.vnu[key] === 'boolean' && nonBooleanKeys.indexOf(key) === -1) {
       assigned.vnu[key] = opts.vnu[key];
+      return;
     }
-    if (key === 'version') {
-      assigned.vnu.version = false;
-    }
-    if (key === 'verbose') {
-      assigned.vnu.verbose = false;
-    }
-    if (key === 'format') {
-      assigned.vnu.format = 'json';
-    }
-    if (key === 'user-agent') {
-      assigned.vnu['user-agent'] = 'Validator.nu/LV';
-    }
+
     if (key === 'filterfile') {
       if (existsSync(opts.vnu.filterfile)) {
         assigned.vnu.filterfile = opts.vnu.filterfile;
@@ -64,6 +61,7 @@ function setVnuOptions(opts, options) {
         );
       }
     }
+
     if (key === 'filterpattern') {
       if (opts.vnu.filterpattern.includes('.*')) {
         assigned.vnu.filterpattern = opts.vnu.filterpattern;

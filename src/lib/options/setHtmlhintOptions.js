@@ -30,6 +30,7 @@ function setHtmlhintOptions(opts, options) {
   const nonBooleanKeys = ['id-class-value', 'space-tab-mixed-disabled'];
   const spaceValues = ['space', 'space4', 'tab'];
   const idClassValues = ['underline', 'dash', 'hump'];
+
   Object.keys(opts.htmlhint).forEach(key => {
     if (allHtmlhintKeys.indexOf(key) === -1) {
       throw new PluginError('gulp-html-conformance', `Unknown key - '${key}' in htmlhint options`);
@@ -42,6 +43,7 @@ function setHtmlhintOptions(opts, options) {
     }
     if (typeof opts.htmlhint[key] === 'boolean' && nonBooleanKeys.indexOf(key) === -1) {
       assigned.htmlhint[key] = opts.htmlhint[key];
+      return;
     }
 
     if (key === 'id-class-value') {

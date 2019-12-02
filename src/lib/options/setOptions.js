@@ -1,16 +1,10 @@
 const PluginError = require('plugin-error');
-
 const setVnuOptions = require('./setVnuOptions');
 const setHtmlhintOptions = require('./setHtmlhintOptions');
+const defaultOptions = require('./defaulOptions');
 
 function setOptions(opts) {
-  let options = {
-    logToFile: false,
-    vnu: {
-      format: 'json'
-    },
-    htmlhint: {}
-  };
+  let options = defaultOptions;
 
   Object.keys(opts).forEach(key => {
     if (key === 'logToFile') {
